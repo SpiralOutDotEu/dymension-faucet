@@ -116,11 +116,14 @@ const FaucetForm: React.FC = () => {
             required
             className="mb-4"
           />
-          <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-            onChange={handleRecaptchaChange}
-            className="m-4"
-          />
+
+          <Box display="flex" justifyContent="center" mb={2}>
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+              onChange={handleRecaptchaChange}
+            />
+          </Box>
+
           {error && (
             <Alert severity="error" className="mb-4">
               {error}
