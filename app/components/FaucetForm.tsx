@@ -140,7 +140,7 @@ const FaucetForm: React.FC = () => {
               variant="contained"
               color="primary"
               fullWidth
-              disabled={loading}
+              disabled={loading || !address || !recaptchaToken}
               className="mb-4"
             >
               {loading ? "Sending..." : "Drip"}
