@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Dymension Faucet',
+  title: 'Dymension League Faucet',
   description: 'Faucet for Dymension League - Apollo Testnet',
 };
 
