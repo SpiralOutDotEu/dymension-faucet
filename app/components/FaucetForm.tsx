@@ -7,6 +7,7 @@ import {
   Typography,
   Alert,
   Box,
+  AlertTitle,
 } from "@mui/material";
 import { FaFaucet } from "react-icons/fa";
 import { MdOutlineRocketLaunch } from "react-icons/md";
@@ -25,6 +26,12 @@ const FaucetForm: React.FC = () => {
     } else {
       setError("Failed to verify reCAPTCHA. Please try again.");
     }
+  };
+
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAddress(e.target.value);
+    setError(null);
+    setSuccess(null);
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -50,7 +57,7 @@ const FaucetForm: React.FC = () => {
 
       if (data.success) {
         setSuccess(
-          "Transaction successful! Check your wallet for tokens. Please comeback tomorrow to request again."
+          "Transaction successful! Check your wallet for tokens. Please come back tomorrow to request again."
         );
       } else {
         setError(data.message || "Transaction failed. Please try again.");
@@ -112,7 +119,7 @@ const FaucetForm: React.FC = () => {
             variant="outlined"
             fullWidth
             value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={handleAddressChange}
             required
             className="mb-4"
           />
@@ -125,15 +132,18 @@ const FaucetForm: React.FC = () => {
           </Box>
 
           {error && (
-            <Alert severity="error" className="mb-4">
+            <Alert severity="error" className="mb-4" variant="outlined">
+              <AlertTitle>Error</AlertTitle>
               {error}
             </Alert>
           )}
           {success && (
-            <Alert severity="success" className="mb-4">
+            <Alert severity="success" className="mb-4" variant="filled">
+              <AlertTitle>Success</AlertTitle>
               {success}
             </Alert>
           )}
+
           {!success && (
             <Button
               type="submit"
