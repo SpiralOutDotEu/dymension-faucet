@@ -27,8 +27,6 @@ export async function POST(request: Request) {
       }
     );
 
-    console.log("URL ");
-    console.log("Recaptcha response: ", recaptchaResponse);
     if (!recaptchaResponse.data.success) {
       return NextResponse.json(
         { success: false, message: "Invalid reCAPTCHA" },
